@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShareBridge — by Kunal Dave</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0e1a;--bg2:#0f1419;--bg3:#161b22;--bg4:#21262d;--border:#30363d;--text:#e6edf3;--text2:#8b949e;--text3:#6e7681;--blue:#58a6ff;--green:#3fb950;--red:#f85149;--purple:#bc8cff;--orange:#ffa657}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;min-height:100vh}
+header{background:rgba(15,20,25,.95);border-bottom:1px solid var(--border);padding:14px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,#58a6ff,#bc8cff);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.logo h1{font-size:18px;font-weight:800;background:linear-gradient(90deg,#58a6ff,#bc8cff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero{text-align:center;padding:60px 24px 40px}
+.hero h2{font-size:clamp(30px,5vw,52px);font-weight:900;margin-bottom:16px}
+.hero h2 span{background:linear-gradient(135deg,#58a6ff,#bc8cff,#ffa657);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:16px;color:var(--text2);max-width:500px;margin:0 auto 24px}
+.btn{padding:10px 20px;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;display:inline-flex;gap:8px}
+.btn-primary{background:linear-gradient(135deg,#58a6ff,#bc8cff);color:#fff}
+.drop-zone{border:2px dashed var(--border);border-radius:14px;padding:40px;text-align:center;cursor:pointer;margin:20px auto;max-width:600px}
+.drop-zone .icon{font-size:52px;display:block;margin-bottom:12px}
+#fileInput{display:none}
+footer{border-top:1px solid var(--border);background:var(--bg2);padding:28px 24px;text-align:center;margin-top:60px}
+.heart{color:var(--red)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">📡</div>
+    <div><h1>ShareBridge</h1></div>
+  </div>
+</header>
+
+<section class="hero">
+  <h2>Transfer files between<br><span>any device instantly</span></h2>
+  <p>iPhone to MacBook. Android to Windows. No cloud, no apps, no cables.</p>
+  <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">📁 Select Files</button>
+</section>
+
+<div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+  <span class="icon">📂</span>
+  <h3>Drop Files Here or Click</h3>
+  <p style="color:#8b949e;font-size:13px">Any file type · Direct P2P transfer</p>
+  <input type="file" id="fileInput" multiple onchange="handleFiles(this.files)">
+</div>
+
+<footer>
+  <p style="font-size:12px;color:#6e7681">Made with <span class="heart">❤️</span> by <strong style="color:#bc8cff">Kunal Dave</strong></p>
+  <p style="font-size:12px;color:#6e7681;margin-top:6px">ShareBridge v2.1 · 100% free & open source</p>
+</footer>
+
+<script>
+function handleFiles(files) {
+  if(!files.length) return;
+  alert(`Selected ${files.length} file(s)! Full transfer feature coming soon.`);
+}
+
+const zone = document.getElementById('dropZone');
+['dragenter','dragover'].forEach(e => {
+  zone.addEventListener(e, ev => {
+    ev.preventDefault();
+    zone.style.borderColor = '#58a6ff';
+  });
+});
+['dragleave','drop'].forEach(e => {
+  zone.addEventListener(e, ev => {
+    ev.preventDefault();
+    zone.style.borderColor = '#30363d';
+  });
+});
+zone.addEventListener('drop', e => handleFiles(e.dataTransfer.files));
+</script>
+
+</body>
+</html>
