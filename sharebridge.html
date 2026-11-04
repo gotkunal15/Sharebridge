@@ -323,6 +323,8 @@ footer {
 </footer>
 
 <script>
+const BACKEND_URL = "https://sharebridge-server-rgbs.onrender.com";
+const WEBSOCKET_URL = "wss://sharebridge-server-rgbs.onrender.com";
 const statusBox = document.getElementById("status");
 const pairStatus = document.getElementById("pairStatus");
 const pairing = document.getElementById("pairing");
@@ -443,7 +445,7 @@ async function createSenderRoom() {
     setPairStatus("Generating QR code...");
 
     try {
-        const response = await fetch("/api/qr?room=" + encodeURIComponent(room));
+        const response = await fetch(BACKEND_URL + "/api/qr?room=" + encodeURIComponent(room));
         if (!response.ok) throw new Error("QR generation failed");
         const data = await response.json();
         document.getElementById("qrImage").src = data.qr;
@@ -457,8 +459,7 @@ async function createSenderRoom() {
 function connectRoom(room) {
     if (socket) socket.close();
 
-    const protocol = location.protocol === "https:" ? "wss:" : "ws:";
-    socket = new WebSocket(protocol + "//" + location.host);
+    socket = new WebSocket(WEBSOCKET_URL);
 
     socket.onopen = () => {
         socket.send(JSON.stringify({ type: "join", room }));
