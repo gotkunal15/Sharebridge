@@ -1,0 +1,26 @@
+{
+  "name": "sharebridge",
+  "version": "1.0.0",
+  "description": "> **[🚀 Try It Live](https://gotkunal15.github.io/Sharebridge/)** — Transfer files instantly between any devices",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gotkunal15/Sharebridge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/gotkunal15/Sharebridge/issues"
+  },
+  "homepage": "https://github.com/gotkunal15/Sharebridge#readme",
+  "dependencies": {
+    "express": "^5.3.0",
+    "qrcode": "^1.5.4",
+    "ws": "^8.22.1"
+  }
+}
