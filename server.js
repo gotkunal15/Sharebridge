@@ -11,11 +11,19 @@ const wss = new WebSocket.Server({ server });
 
 const rooms = new Map();
 
+const FRONTEND_URL =
+    "https://gotkunal15.github.io/Sharebridge";
+
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "sharebridge.html"));
 });
 
 app.get("/api/qr", async (req, res) => {
+    res.setHeader(
+        "Access-Control-Allow-Origin",
+        "https://gotkunal15.github.io"
+    );
+
     const room = req.query.room;
 
     if (!/^[A-Za-z0-9-]{4,50}$/.test(room || "")) {
@@ -26,7 +34,7 @@ app.get("/api/qr", async (req, res) => {
 
     try {
         const joinUrl =
-    `${req.protocol}://${req.get("host")}/?room=${encodeURIComponent(room)}&role=receive`;
+            `${FRONTEND_URL}/?room=${encodeURIComponent(room)}&role=receive`;
 
         const qr = await QRCode.toDataURL(joinUrl);
 
