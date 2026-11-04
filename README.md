@@ -1,151 +1,235 @@
 # 🌉 ShareBridge
 
-> **[🚀 Try It Live](https://gotkunal15.github.io/Sharebridge/)** — Transfer files instantly between any devices
-
-[![Live Demo](https://img.shields.io/badge/🚀-Live%20Demo-blue?style=for-the-badge)](https://gotkunal15.github.io/Sharebridge/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
-[![Made by Kunal Dave](https://img.shields.io/badge/Made%20by-Kunal%20Dave-orange?style=for-the-badge)](https://github.com/gotkunal15)
-
-ShareBridge solves the frustrating problem of transferring files between different devices. No more email attachments, USB cables, or cloud uploads. Just open the same webpage on both devices and share instantly.
+<p align="center">
+  <strong>Simple. Fast. Cross-device file sharing.</strong>
+  <br />
+  Transfer files between devices without cables, complicated setup, or installing an application.
+  <br /><br />
+  <a href="https://gotkunal15.github.io/Sharebridge/">
+    <img src="https://img.shields.io/badge/🚀_Try_ShareBridge-Live_Demo-blue?style=for-the-badge" alt="Live Demo" />
+  </a>
+  <a href="https://github.com/gotkunal15/Sharebridge">
+    <img src="https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github" alt="GitHub" />
+  </a>
+  <br /><br />
+  <img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License" />
+  <img src="https://img.shields.io/badge/Platform-Web-orange" alt="Web Platform" />
+  <img src="https://img.shields.io/badge/Status-In_Development-yellow" alt="In Development" />
+</p>
 
 ---
+
+## 📸 Preview
+
+<!-- Replace this placeholder with a screenshot or GIF of ShareBridge. -->
+
+<p align="center">
+  <i>ShareBridge interface preview coming soon.</i>
+</p>
+
+---
+
+## 💡 What is ShareBridge?
+
+ShareBridge is a browser-based file-sharing project designed to make transferring files between devices simple and convenient.
+
+Whether you're using a Windows computer, Android phone, iPhone, or another supported device, ShareBridge aims to make sharing easier.
+
+No complicated installation. No unnecessary accounts. Just open the website and connect your devices.
+
+**Our goal:** Make file sharing as simple as opening a link.
 
 ## ✨ Features
 
-- 📱 **Universal** — Works on iPhone, Android, Mac, Windows, Linux
-- ⚡ **Instant** — Direct peer-to-peer transfer over local WiFi
-- 🔒 **Private** — Files never touch the cloud or any server
-- 🎯 **Zero Setup** — No apps, no accounts, just a web browser
-- 📲 **QR Code** — Scan to connect devices instantly
-- 🎨 **Beautiful** — Clean, modern, dark-themed interface
+| Feature | Description |
+|---|---|
+| 🌐 Cross-device | Designed for computers, phones, and tablets |
+| 📱 QR pairing | Connect devices using a QR code |
+| ⚡ Fast transfers | Designed around direct device-to-device communication |
+| 🔒 Privacy-focused | File contents are intended to stay between connected devices |
+| 🖥️ Browser-based | No dedicated application installation required |
+| 🎨 Modern interface | Clean, dark-themed user interface |
+| 🌍 Online access | Connect through the hosted website |
+
+## 🚀 Try ShareBridge
+
+**Live website:**  
+https://gotkunal15.github.io/Sharebridge/
+
+1. Open ShareBridge on your first device.
+2. Generate a connection and display its QR code.
+3. Open ShareBridge on your second device.
+4. Scan the QR code to join the connection.
+5. Follow the on-screen instructions to share files.
+
+## ⚙️ How It Works
+
+ShareBridge uses a frontend website and a signalling backend to help devices establish a connection.
+
+```text
+       DEVICE A                    DEVICE B
+    ┌────────────┐              ┌────────────┐
+    │  Browser   │              │  Browser   │
+    └─────┬──────┘              └─────┬──────┘
+          │                           │
+          │       ShareBridge         │
+          ├──────── Signalling ───────┤
+          │                           │
+          └──── Direct connection ────┘
+                 (P2P design)
+```
+
+The signalling server helps devices exchange connection information. The intended architecture uses peer-to-peer communication for file transfer rather than storing file contents on the signalling server.
+
+## 🧰 Technology Stack
+
+| Technology | Purpose |
+|---|---|
+| HTML5 | Website structure |
+| CSS3 | Interface and styling |
+| JavaScript | Application functionality |
+| Node.js | Backend runtime |
+| Express.js | HTTP server |
+| WebSocket | Device signalling |
+| WebRTC | Peer-to-peer communication |
+| QR Code | Device pairing |
+
+## 🏗️ Project Structure
+
+```text
+Sharebridge/
+│
+├── index.html
+├── sharebridge.html
+├── server.js
+├── package.json
+├── package-lock.json
+├── README.md
+├── LICENSE
+│
+└── .github/
+    └── workflows/
+        └── pages.yml
+```
+
+## 💻 Run Locally
+
+### Requirements
+
+- Node.js
+- npm
+- Git
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/gotkunal15/Sharebridge.git
+```
+
+### 2. Open the project folder
+
+```bash
+cd Sharebridge
+```
+
+### 3. Install dependencies
+
+```bash
+npm install
+```
+
+### 4. Start the server
+
+```bash
+node server.js
+```
+
+### 5. Open ShareBridge
+
+Visit:
+
+```text
+http://localhost:3000
+```
+
+The local server must remain running while using the local version.
+
+## 🌍 Deployment
+
+ShareBridge uses two hosted components:
+
+| Component | Platform |
+|---|---|
+| Frontend | GitHub Pages |
+| Backend | Render |
+
+**Frontend:**  
+https://gotkunal15.github.io/Sharebridge/
+
+**Backend:**  
+https://sharebridge-server-rgbs.onrender.com/
+
+The GitHub Actions workflow deploys the frontend when changes are pushed to the `main` branch. The Render backend deploys from the repository separately.
+
+## 🗺️ Roadmap
+
+ShareBridge is an evolving project. Planned improvements include:
+
+- [ ] Faster and adaptive file transfers
+- [ ] Live transfer progress
+- [ ] Transfer speed and estimated time
+- [ ] Multiple-file sharing improvements
+- [ ] Drag-and-drop support
+- [ ] Better mobile experience
+- [ ] Large-file transfer optimisation
+- [ ] Transfer cancellation
+- [ ] Improved connection recovery
+- [ ] More detailed error messages
+
+## 🤝 Contributing
+
+Contributions, suggestions, and bug reports are welcome!
+
+1. Fork this repository.
+2. Create a feature branch.
+3. Make your changes.
+4. Commit your changes.
+5. Push your branch.
+6. Open a Pull Request.
+
+```bash
+git checkout -b feature/your-feature
+git add .
+git commit -m "Add your feature"
+git push origin feature/your-feature
+```
+
+## 🐛 Report Issues
+
+Found a bug or have an idea?
+
+- [Report a bug](https://github.com/gotkunal15/Sharebridge/issues)
+- [View existing issues](https://github.com/gotkunal15/Sharebridge/issues)
+
+## 📄 License
+
+ShareBridge is distributed under the MIT License.
+
+See [LICENSE](LICENSE) for details.
+
+## 👨‍💻 Creator
+
+**Kunal Dave**
+
+Created to explore better ways of connecting devices and sharing files.
+
+- GitHub: [@gotkunal15](https://github.com/gotkunal15)
+- Project: [ShareBridge](https://github.com/gotkunal15/Sharebridge)
 
 ---
 
-## 🚀 Quick Start
-
-### Option 1: Use Online (Recommended)
-1. Open **[gotkunal15.github.io/Sharebridge](https://gotkunal15.github.io/Sharebridge/)** on Device A
-2. Open the same link on Device B (must be on same WiFi)
-3. Drag & drop files to transfer
-4. Done! 🎉
-
-### Option 2: Run Locally
-```bash
-# Clone the repo
-git clone https://github.com/gotkunal15/Sharebridge.git
-cd Sharebridge
-
-# Open in browser
-open sharebridge.html
-
-# Or serve locally
-python -m http.server 8080
-# Visit: http://localhost:8080
-📱 Supported Devices
-Platform	Browser	Status
-📱 iPhone	Safari 12+	✅ Tested
-🤖 Android	Chrome 80+	✅ Tested
-💻 macOS	Safari, Chrome, Firefox	✅ Tested
-🖥️ Windows	Edge, Chrome, Firefox	✅ Tested
-🐧 Linux	Chrome, Firefox	✅ Tested
-📟 iPad	Safari 12+	✅ Tested
-🎬 How It Works
-┌─────────────┐                    ┌─────────────┐
-│  Device A   │                    │  Device B   │
-│   Browser   │                    │   Browser   │
-└──────┬──────┘                    └──────┬──────┘
-       │                                  │
-       │  1. Open same webpage            │
-       ├──────────────────────────────────┤
-       │                                  │
-       │  2. WebRTC handshake             │
-       ├─────────────────────────────────>│
-       │<─────────────────────────────────┤
-       │                                  │
-       │  3. Direct P2P connection        │
-       │==================================│
-       │                                  │
-       │  4. File chunks transfer         │
-       ├─────────────────────────────────>│
-       │  (No server, pure local)         │
-       │                                  │
-       ✅ Complete                        ✅ Received
-Technology Stack:
-
-HTML5 File API
-WebRTC Data Channels
-Canvas QR Code Generator
-LocalStorage for peer discovery
-Vanilla JavaScript (no dependencies!)
-🛠️ Development
-Project Structure
-Sharebridge/
-├── sharebridge.html    # Complete single-file app
-├── index.html          # Redirect helper
-├── README.md          # This file
-└── LICENSE            # MIT License
-Contributing
-Contributions welcome! Here's how:
-
-Fork the repo
-Create feature branch: git checkout -b feature/amazing-feature
-Commit changes: git commit -m 'Add amazing feature'
-Push to branch: git push origin feature/amazing-feature
-Open a Pull Request
-Ideas for contributions:
-
- Add encryption indicator
- Resume interrupted transfers
- Multiple file selection UI
- Transfer history
- Text/clipboard sharing
- Mobile app wrappers
- Progress animations
-🐛 Known Limitations
-Large files (>500MB) may timeout on slow networks
-Safari on iOS requires user gesture for WebRTC
-Corporate firewalls may block P2P connections
-Both devices must be on same WiFi network
-See Issues for full list and workarounds.
-
-📋 Roadmap
- Basic file transfer
- QR code sharing
- Cross-platform support
- Drag & drop interface
- End-to-end encryption (AES-256)
- Resume broken transfers
- Group transfers (3+ devices)
- Real-time text chat
- Screen sharing mode
- Mobile native apps
-🤝 Support & Contact
-💬 Discussions: GitHub Discussions
-🐛 Bug Reports: GitHub Issues
-📧 Email: kunal@example.com
-🐙 GitHub: @gotkunal15
-📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-MIT License
-
-Copyright (c) 2026 Kunal Dave
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction...
-💖 Acknowledgments
-Thanks to the WebRTC community for excellent documentation
-Inspired by AirDrop's simplicity
-Built with ☕ and determination to solve a real problem
-⭐ Star History
-If ShareBridge helps you, please give it a star! ⭐
-
-It helps others discover the project.
-
-<div align="center">
-Made with ❤️ by Kunal Dave
-
-⬆ Back to Top
-
-</div> ```
+<p align="center">
+  If you find ShareBridge interesting, consider giving the repository a ⭐.
+  <br /><br />
+  <strong>Built with curiosity. Connected with ShareBridge.</strong>
+</p>
